@@ -1,25 +1,28 @@
 package collection.map.test.cart;
 
+import generic.test.ex3.unit.Marine;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Cart {
 
     private Map<Product, Integer> cartMap = new HashMap<>();
 
-    public void add(Product product, int addQuantity) {
+    public void add(Product product, Integer addQuantity) {
 
-        Integer existingQuantity = cartMap.getOrDefault(product, 0); // getOrDefault: 키가 없는 경우 대신 사용할 기본 값을 지정 할 수 있음
+        int existingQuantity = cartMap.getOrDefault(product, 0);
         cartMap.put(product, existingQuantity + addQuantity);
+
     }
 
-    public void minus(Product product, int minusQuantity) {
-        Integer existingQuantity = cartMap.get(product);
+    public void minus(Product product, Integer minusQuantity) {
+        //수량이 0보다 작으면 장바구니에서 상품 제거
+        int existingQuantity = cartMap.getOrDefault(product, 0);
         int newQuantity = existingQuantity - minusQuantity;
-        if (newQuantity <= 0) {
+        if(newQuantity <= 0) {
             cartMap.remove(product);
-        } else {
+        }else {
             cartMap.put(product, newQuantity);
         }
     }
@@ -30,11 +33,5 @@ public class Cart {
             System.out.println("상품: " + entry.getKey() + " 수량: " + entry.getValue());
         }
     }
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "cartMap=" + cartMap +
-                '}';
-    }
 }
+

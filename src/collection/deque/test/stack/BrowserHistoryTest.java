@@ -10,8 +10,9 @@ public class BrowserHistoryTest {
 
         String currentPage1 = browser.goBack();
         System.out.println("currentPage1 = " + currentPage1);
-
         String currentPage2 = browser.goBack();
         System.out.println("currentPage2 = " + currentPage2);
+
+
     }
 }

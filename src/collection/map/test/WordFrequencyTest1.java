@@ -1,33 +1,20 @@
 package collection.map.test;
 
-import java.awt.image.ImageProducer;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class WordFrequencyTest1 {
     public static void main(String[] args) {
+        //각각의 단어가 나타난 수를 출력 {orange=1, banana=2, apple=3}
         String text = "orange banana apple apple banana apple";
-        HashMap<String, Integer> result = new HashMap<>();
+        String[] words = text.split(" ");
 
-        String space = " ";
-        String[] words = text.split(space);
-        System.out.println("words = " + Arrays.toString(words));
-
-//        for (String word : words) {
-//            Integer count = result.get(word);
-//            if(count == null){
-//                count = 0;
-//            }
-//            count++;
-//            result.put(word,count);
-//        }
-
+        HashMap<String, Integer> resultMap = new HashMap<>();
         for (String word : words) {
-            result.put(word, result.getOrDefault(word, 0) + 1); // getOrDefault: 키가 없는 경우 대신 사용할 기본 값을 지정 할 수 있음
+            Integer count = resultMap.getOrDefault(word, 0) + 1;
+            resultMap.put(word, count);
         }
-        
-        System.out.println("result = " + result);
+
+        System.out.println(resultMap);
+
     }
 }

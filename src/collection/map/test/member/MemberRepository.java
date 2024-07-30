@@ -7,12 +7,9 @@ public class MemberRepository {
 
     private Map<String, Member> memberMap = new HashMap<>();
 
+    //저장
     public void save(Member member) {
-        memberMap.put(member.getId(),member);
-    }
-
-    public void remove(String id) {
-        memberMap.remove(id);
+        memberMap.put(member.getId(), member);
     }
 
     public Member findById(String id) {
@@ -20,11 +17,17 @@ public class MemberRepository {
     }
 
     public Member findByName(String name) {
+
         for (Member member : memberMap.values()) {
-            if(member.getName().equals(name)){
+            if(member.getName().equals(name))
+            {
                 return member;
             }
         }
         return null;
+    }
+
+    public void remove(String id) {
+        memberMap.remove(id);
     }
 }
